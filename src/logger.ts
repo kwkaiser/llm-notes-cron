@@ -10,7 +10,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 export const logger = pino({
   name: 'llm-notes-cron',
   level: process.env.LOG_LEVEL || (isDevelopment ? 'debug' : 'info'),
-  
+
   // Base fields to include in every log
   base: {
     pid: process.pid,
@@ -20,23 +20,18 @@ export const logger = pino({
   // Timestamp configuration
   timestamp: pino.stdTimeFunctions.isoTime,
 
-  // Transport configuration - console only with pretty printing in development
-  transport: isDevelopment ? {
-    target: 'pino-pretty',
+  // Transport configuration - console only with JSON output
+  transport: {
+    target: 'pino/file',
     options: {
-      colorize: true,
-      translateTime: 'yyyy-mm-dd HH:MM:ss',
-      ignore: 'pid,hostname',
-      singleLine: false,
-      hideObject: false,
-      messageFormat: '[{name}] {msg}',
-    }
-  } : undefined,
+      destination: 1, // stdout
+    },
+  },
 
   // Redact sensitive information
   redact: {
     paths: ['password', 'token', 'authorization', 'cookie'],
-    censor: '[REDACTED]'
+    censor: '[REDACTED]',
   },
 
   // Serializers for common objects

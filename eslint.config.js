@@ -1,17 +1,14 @@
-import globals from 'globals';
 import { FlatCompat } from '@eslint/eslintrc';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import prettier from 'eslint-plugin-prettier';
-import sonarjs from 'eslint-plugin-sonarjs';
-import * as typescriptEslintParser from '@typescript-eslint/parser';
-import { InfiniteDepthConfigWithExtends } from 'typescript-eslint';
 // @ts-ignore
 import * as typescriptEslintPlugin from '@typescript-eslint/eslint-plugin'; // Required import for eslint
+import * as typescriptEslintParser from '@typescript-eslint/parser';
+import prettier from 'eslint-plugin-prettier';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import globals from 'globals';
+import path from 'path';
+import tseslint from 'typescript-eslint';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,7 +39,6 @@ const configs = [
     },
   },
 
-  sonarjs.configs.recommended,
   ...tseslint.configs.recommended,
   js.configs.recommended,
   ...compat.extends('standard', 'prettier'),
@@ -123,8 +119,7 @@ const configs = [
             },
             {
               group: ['node:test/*'],
-              message:
-                'We are using vitest for testing, so please use vitest instead of node:test.',
+              message: 'We are using vitest for testing, so please use vitest instead of node:test.',
             },
           ],
         },
@@ -148,32 +143,6 @@ const configs = [
           printWidth: 120,
         },
       ],
-    },
-  },
-
-  /**
-   * Sonar
-   */
-  {
-    rules: {
-      'no-use-before-define': 'off',
-      'sonarjs/no-duplicate-string': 'off',
-      'sonarjs/no-gratuitous-expressions': 'off',
-      'sonarjs/no-commented-code': 'off',
-      'sonarjs/todo-tag': 'off',
-      'sonarjs/deprecation': 'off',
-      'sonarjs/array-callback-without-return': 'off',
-      'sonarjs/no-unused-vars': 'off',
-      'sonarjs/use-type-alias': 'off',
-      'sonarjs/no-alphabetical-sort': 'off',
-      'sonarjs/assertions-in-tests': 'off',
-      'sonarjs/redundant-type-aliases': 'off',
-      'sonarjs/different-types-comparison': 'off',
-      'sonarjs/no-identical-functions': 'off',
-      'sonarjs/no-invalid-await': 'off', // TODO: restore
-      'sonarjs/no-nested-functions': 'off', // TODO: consider restoring
-      '@typescript-eslint/no-unsafe-function-type': 'off', // TODO consider restoring
-      'sonarjs/no-hardcoded-secrets': 'off', // TODO: restore
     },
   },
 

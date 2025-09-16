@@ -29,30 +29,29 @@ export const delay = (ms: number): Promise<void> => {
 
 export const fetchUserData = async (userId: string): Promise<{ id: string; name: string }> => {
   const requestLogger = utilsLogger.child({ function: 'fetchUserData', userId });
-  
+
   requestLogger.debug('Starting user data fetch');
-  
+
   try {
     // Simulate API call
     await delay(100);
-    
+
     if (userId === 'invalid') {
       requestLogger.warn('Invalid user ID provided', { userId });
       throw new Error('User not found');
     }
-    
+
     const userData = {
       id: userId,
       name: `User ${userId}`,
     };
-    
+
     requestLogger.info('User data fetched successfully', { userData });
     return userData;
-    
   } catch (error) {
-    requestLogger.error('Failed to fetch user data', { 
+    requestLogger.error('Failed to fetch user data', {
       error: error instanceof Error ? error.message : error,
-      userId 
+      userId,
     });
     throw error;
   }

@@ -1,6 +1,7 @@
-import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import { add, multiply, formatGreeting, isEven, delay, fetchUserData } from './utils.js';
+import { describe, test } from 'node:test';
+
+import { add, delay, fetchUserData, formatGreeting, isEven, multiply } from './utils.js';
 
 describe('Math utilities', () => {
   test('add function should correctly add two numbers', () => {
@@ -47,7 +48,7 @@ describe('Async utilities', () => {
     await delay(50);
     const end = Date.now();
     const elapsed = end - start;
-    
+
     // Allow some tolerance for timing
     assert.ok(elapsed >= 45 && elapsed <= 100, `Expected delay around 50ms, got ${elapsed}ms`);
   });
@@ -68,19 +69,15 @@ describe('Async utilities', () => {
       {
         name: 'Error',
         message: 'User not found',
-      }
+      },
     );
   });
 
   test('fetchUserData should handle concurrent requests', async () => {
-    const promises = [
-      fetchUserData('user1'),
-      fetchUserData('user2'),
-      fetchUserData('user3'),
-    ];
+    const promises = [fetchUserData('user1'), fetchUserData('user2'), fetchUserData('user3')];
 
     const results = await Promise.all(promises);
-    
+
     assert.strictEqual(results.length, 3);
     assert.strictEqual(results[0].id, 'user1');
     assert.strictEqual(results[1].id, 'user2');

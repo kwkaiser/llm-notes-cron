@@ -30,39 +30,41 @@ logger.info('Application initialization', {
 // Example async function with structured logging
 async function main(): Promise<void> {
   const mainLogger = createChildLogger({ component: 'main' });
-  
+
   try {
     mainLogger.info('Starting main application logic');
-    
+
     // Simulate some work with logging
     mainLogger.debug('Performing initialization tasks');
-    
+
     // Example of logging with context
     const config = {
       timeout: 5000,
       retries: 3,
       environment: process.env.NODE_ENV || 'development',
     };
-    
+
     mainLogger.info('Application configuration loaded', { config });
-    
+
     // Simulate async work
     await new Promise((resolve) => setTimeout(resolve, 100));
-    
+
     mainLogger.info('Main application logic completed successfully', {
       duration: '100ms',
       status: 'success',
     });
-    
   } catch (error) {
     mainLogger.error('Application error occurred', {
-      error: error instanceof Error ? {
-        message: error.message,
-        stack: error.stack,
-        name: error.name,
-      } : error,
+      error:
+        error instanceof Error
+          ? {
+              message: error.message,
+              stack: error.stack,
+              name: error.name,
+            }
+          : error,
     });
-    
+
     // Log fatal error and exit
     logger.fatal('Application terminating due to unhandled error');
     process.exit(1);
@@ -76,9 +78,9 @@ process.on('uncaughtException', (error) => {
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-  logger.fatal('Unhandled promise rejection', { 
-    reason, 
-    promise: promise.toString() 
+  logger.fatal('Unhandled promise rejection', {
+    reason,
+    promise: promise.toString(),
   });
   process.exit(1);
 });
