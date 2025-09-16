@@ -41,7 +41,7 @@ const configs = [
 
   ...tseslint.configs.recommended,
   js.configs.recommended,
-  ...compat.extends('standard', 'prettier'),
+  ...compat.extends('prettier'),
 
   /**
    * Core eslint

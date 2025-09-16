@@ -12,7 +12,7 @@
     "build:watch": "tsc --noEmit --watch",
     "dev": "NODE_ENV=development tsx src/index.ts",
     "clean": "rm -rf dist",
-    "test": "node --test --loader=tsx/esm src/**/*.test.ts",
+    "test": "node --test --import=tsx/esm src/**/*.test.ts",
     "lint": "eslint .",
     "depcheck": "depcheck",
     "docker:build": "docker build -t llm-notes-cron ."
@@ -21,8 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pino": "^9.4.0",
-    "pino-pretty": "^11.2.2"
+    "pino": "^9.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -33,13 +32,8 @@
     "depcheck": "^1.4.7",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.30.0",
-    "eslint-plugin-n": "^17.10.3",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-sonarjs": "^2.0.2",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
     "tsx": "^4.19.0",
