@@ -1,10 +1,4 @@
-#!/usr/bin/env node
-
-/**
- * Simple TypeScript application entry point
- */
-
-import logger from './logger';
+import logger from './logger.js';
 
 const main = () => {
   logger.info('Yo dawg');

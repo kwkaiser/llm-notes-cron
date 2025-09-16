@@ -1,13 +1,11 @@
 # Dependencies
 node_modules/
-pnpm-lock.yaml
+.pnpm-store/
 
 # Build outputs (will be copied from build stage)
 dist/
 
 # Development files
-src/
-tsconfig.json
 eslint.config.js
 .prettierrc.json
 

@@ -1,6 +1,6 @@
 import pino from 'pino';
 
-export const logger = pino({
+const logger = pino({
   transport: {
     target: 'pino/file',
     options: {
@@ -20,12 +20,5 @@ export const logger = pino({
     res: pino.stdSerializers.res,
   },
 });
-
-/**
- * Create a child logger with additional context
- */
-export const createChildLogger = (context: Record<string, any>) => {
-  return logger.child(context);
-};
 
 export default logger;
