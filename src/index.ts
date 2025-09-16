@@ -1,7 +1,7 @@
 import logger from './logger.js';
 
 const main = () => {
-  logger.info('Yo dawg');
+  logger.info('Push test');
 };
 
 main();
