@@ -7,7 +7,7 @@
 import logger from './logger';
 
 const main = () => {
-  logger.info('Hello, TypeScript world!');
+  logger.info('Yo dawg');
 };
 
 main();
