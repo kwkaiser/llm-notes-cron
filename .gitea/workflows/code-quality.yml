@@ -1,16 +1,15 @@
-name: Code Quality
+name: Pull request
 
 on:
-  pull_request:
-    branches: [ main, develop ]
-  release:
-    types: [ published, created ]
+  pull_request_target:
+    branches:
+      - '**'
 
 jobs:
   code-quality:
     name: Code Quality Checks
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,7 +30,7 @@ jobs:
 
       - name: Build project
         run: pnpm build
-        
+
       - name: Run linter
         run: pnpm lint
 
