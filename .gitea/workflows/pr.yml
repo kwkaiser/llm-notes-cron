@@ -1,0 +1,12 @@
+name: Pull Request Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main, develop ]
+
+jobs:
+  code-quality:
+    name: Code Quality for PR
+    uses: ./.gitea/workflows/code-quality.yml
+    needs: validate-pr

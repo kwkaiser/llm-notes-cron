@@ -1,0 +1,72 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Build outputs (will be copied from build stage)
+dist/
+
+# Development files
+src/
+tsconfig.json
+eslint.config.js
+.prettierrc.json
+
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage/
+*.lcov
+
+# Cache directories
+.npm/
+.eslintcache
+.prettiercache
+*.tsbuildinfo
+
+# Documentation
+README.md
+*.md
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Temporary files
+tmp/
+temp/

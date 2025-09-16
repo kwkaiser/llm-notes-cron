@@ -1,0 +1,19 @@
+{
+  "ignores": [
+    "@types/*",
+    "tsx",
+    "typescript"
+  ],
+  "ignore-patterns": [
+    "dist",
+    "node_modules",
+    "*.test.ts",
+    "*.spec.ts"
+  ],
+  "skip-missing": false,
+  "ignore-dirs": [
+    "dist",
+    "coverage",
+    ".git"
+  ]
+}
