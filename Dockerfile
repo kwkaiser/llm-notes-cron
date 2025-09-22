@@ -1,5 +1,5 @@
 # Use Node.js 20 Alpine for smaller image size
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 
 # Install pnpm globally
 RUN npm install -g pnpm
@@ -23,7 +23,7 @@ COPY . .
 RUN pnpm build
 
 # Production stage
-FROM node:20-alpine AS production
+FROM node:22-alpine AS production
 
 # Install pnpm globally in production image
 RUN npm install -g pnpm
